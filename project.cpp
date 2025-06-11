@@ -166,7 +166,12 @@ int main() {
     int choice;
     do {
         printf("\n1. Display Movies\n2. Book Ticket\n3. Process Bookings (if payment recevied from customer)\n4. Cancel Ticket\n5. View Tickets\n6. Exit\nChoice: ");
-        scanf("%d", &choice);
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input! Try again.\n");
+            while (getchar() != '\n'); // Clear input buffer
+            continue;
+        }
+
         switch (choice) {
             case 1: displayMovies(); break;
             case 2: bookTicket(); break;
